@@ -7,16 +7,25 @@ export default {
   data() {
     return {
       title: "Vue Boolfolio",
-      projects: [],
+
+      projects: {
+        list: [],
+        pages: [],
+      },
     };
   },
 
   components: { AppHeader, ProjectList },
 
+  emits: ["changePage"],
+
   methods: {
-    fetchProjects() {
-      axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-        this.projects = response.data;
+    fetchProjects(endpoint = null) {
+      if (!endpoint) endpoint = "http://127.0.0.1:8000/api/projects";
+
+      axios.get(endpoint).then((response) => {
+        this.projects.list = response.data.data;
+        this.projects.pages = response.data.links;
       });
     },
   },
@@ -30,9 +39,11 @@ export default {
 <template>
   <AppHeader :title="title" />
   <ProjectList
-    :projects="projects"
+    :projects="projects.list"
+    :pages="projects.pages"
     title="Most recent"
     class="my-3"
+    @changePage="fetchProjects"
   />
 </template>
 
