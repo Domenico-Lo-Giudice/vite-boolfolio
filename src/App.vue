@@ -6,7 +6,7 @@ import ProjectList from "./components/ProjectList.vue";
 export default {
   data() {
     return {
-      title: "Hello",
+      title: "Vue Boolfolio",
       projects: [],
     };
   },
@@ -28,9 +28,12 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
-  <h1>{{ title }}</h1>
-  <ProjectList :projects="projects" />
+  <AppHeader :title="title" />
+  <ProjectList
+    :projects="projects"
+    title="Most recent"
+    class="my-3"
+  />
 </template>
 
 <style lang="scss" scoped></style>
