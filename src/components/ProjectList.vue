@@ -14,11 +14,14 @@ export default {
 <template>
   <section class="container">
     <h1>{{ title }}</h1>
-    <ProjectCard
-      v-for="project in projects"
-      :key="project.id"
-      :project="project"
-    />
+    <div class="row g-4">
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.id"
+        :project="project"
+        class="col-md-4 d-flex"
+      />
+    </div>
   </section>
 </template>
 
