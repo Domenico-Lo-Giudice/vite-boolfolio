@@ -16,7 +16,7 @@ export default {
     // console.log(this.$route.params.id);
 
     axios
-      .get(`http://127.0.0.1:8000/api/projects/${this.$route.params.id}`)
+      .get(`http://127.0.0.1:8000/api/projects/${this.$route.params.slug}`)
       .then((response) => {
         this.project = response.data;
       });

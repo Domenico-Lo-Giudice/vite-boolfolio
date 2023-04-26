@@ -32,7 +32,7 @@ export default {
           :to="{
             name: 'project-detail',
             params: {
-              id: project.id,
+              slug: project.slug,
             },
           }"
         >

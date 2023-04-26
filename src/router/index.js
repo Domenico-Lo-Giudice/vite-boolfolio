@@ -22,7 +22,7 @@ const router = createRouter({
       component: ContactPage,
     },
     {
-      path: "/projects/:id",
+      path: "/projects/:slug",
       name: "project-detail",
       component: ProjectDetailPage,
     },
