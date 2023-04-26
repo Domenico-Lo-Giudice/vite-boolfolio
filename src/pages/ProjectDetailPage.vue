@@ -1,6 +1,5 @@
 <script>
 import ProjectCard from "../components/ProjectCard.vue";
-import AppLoader from "../components/AppLoader.vue";
 import axios from "axios";
 
 export default {
@@ -12,7 +11,7 @@ export default {
       isLoading: false,
     };
   },
-  components: { ProjectCard, AppLoader },
+  components: { ProjectCard },
 
   created() {
     // console.log(this.$route.params.id);
