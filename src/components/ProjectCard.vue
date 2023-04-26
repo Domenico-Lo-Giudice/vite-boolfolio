@@ -18,10 +18,27 @@ export default {
 <template>
   <div>
     <div class="card">
-      <div class="card-header">
+      <div class="card-header clearfix">
+        <span
+          v-if="project.type"
+          class="badge float-end"
+          >{{ project.type.label }}
+        </span>
         <h2>{{ project.title }}</h2>
       </div>
       <div class="card-body">
+        <div v-if="project.teches.length">
+          <span
+            v-for="teche in project.teches"
+            :key="teche.id"
+            class="badge rounded-pill me-2"
+            :style="{ backgroundColor: teche.color }"
+          >
+            {{ teche.label }}
+          </span>
+          <hr />
+        </div>
+
         {{ isDetail ? project.text : abstract }}
       </div>
       <div class="card-footer d-flex justify-content-between">
