@@ -15,7 +15,10 @@ export default {
 <template>
   <section class="container">
     <h1 class="my-4">{{ title }}</h1>
-    <div class="row g-4">
+    <div
+      v-if="projects.length"
+      class="row g-4"
+    >
       <ProjectCard
         v-for="project in projects"
         :key="project.id"
@@ -23,6 +26,12 @@ export default {
         class="col-md-4 d-flex"
       />
     </div>
+    <h2
+      v-else
+      class="text-muted"
+    >
+      Non ci sono projects
+    </h2>
 
     <nav aria-label="Projects Pagination">
       <ul class="pagination my-3">
