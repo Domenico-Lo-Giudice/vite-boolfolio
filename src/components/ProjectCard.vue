@@ -27,6 +27,7 @@ export default {
       <div class="card-footer d-flex justify-content-between">
         Created at {{ project.created_at }}
         <router-link
+          v-if="!isDetail"
           class="btn btn-primary btn-sm"
           :to="{
             name: 'project-detail',
