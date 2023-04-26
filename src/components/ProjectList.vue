@@ -2,12 +2,14 @@
 import axios from "axios";
 
 import ProjectCard from "./ProjectCard.vue";
+import AppLoader from "./AppLoader.vue";
 import AppPagination from "./AppPagination.vue";
 
 export default {
   data() {
     return {
       error: false,
+      isLoading: false,
       projects: {
         list: [],
         pages: [],
@@ -19,11 +21,13 @@ export default {
     title: String,
   },
 
-  components: { ProjectCard, AppPagination },
+  components: { ProjectCard, AppPagination, AppLoader },
   emits: ["changePage"],
 
   methods: {
     fetchProjects(endpoint = null) {
+      this.isLoading = true;
+
       if (!endpoint) endpoint = "http://127.0.0.1:8000/api/projects";
 
       axios
@@ -34,6 +38,9 @@ export default {
         })
         .catch((err) => {
           this.error = err.message;
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },
@@ -47,6 +54,7 @@ export default {
 <template>
   <section>
     <h1 class="my-4">{{ title }}</h1>
+    <AppLoader v-if="isLoading" />
     <div
       v-if="error"
       class="alert alert-danger"

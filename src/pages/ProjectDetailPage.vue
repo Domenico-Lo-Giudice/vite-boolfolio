@@ -1,5 +1,6 @@
 <script>
 import ProjectCard from "../components/ProjectCard.vue";
+import AppLoader from "../components/AppLoader.vue";
 import axios from "axios";
 
 export default {
@@ -8,12 +9,14 @@ export default {
   data() {
     return {
       project: null,
+      isLoading: false,
     };
   },
-  components: { ProjectCard },
+  components: { ProjectCard, AppLoader },
 
   created() {
     // console.log(this.$route.params.id);
+    this.isLoading = true;
 
     axios
       .get(`http://127.0.0.1:8000/api/projects/${this.$route.params.slug}`)
@@ -27,12 +30,14 @@ export default {
       })
       .finally(() => {
         // comunque sia...
+        this.isLoading = false;
       });
   },
 };
 </script>
 
 <template>
+  <AppLoader v-if="isLoading" />
   <h1 class="my-4">Dettaglio Project {{ project?.title }}</h1>
   <ProjectCard
     v-if="project"
