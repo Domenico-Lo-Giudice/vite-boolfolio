@@ -1,6 +1,5 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
-import HomePage from "./pages/HomePage.vue";
 
 export default {
   data() {
@@ -9,16 +8,14 @@ export default {
     };
   },
 
-  components: { AppHeader, HomePage },
+  components: { AppHeader },
 };
 </script>
 
 <template>
   <AppHeader :title="title" />
 
-  <!-- todo: inserire router component -->
-
-  <HomePage />
+  <router-view></router-view>
 </template>
 
 <style lang="scss" scoped></style>
