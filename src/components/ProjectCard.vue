@@ -4,6 +4,7 @@ export default {
 
   props: {
     project: Object,
+    isDetail: Boolean,
   },
 
   computed: {
@@ -21,7 +22,7 @@ export default {
         <h2>{{ project.title }}</h2>
       </div>
       <div class="card-body">
-        {{ project.text }}
+        {{ isDetail ? project.text : abstract }}
       </div>
       <div class="card-footer d-flex justify-content-between">
         Created at {{ project.created_at }}

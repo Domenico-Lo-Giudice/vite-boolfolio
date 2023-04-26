@@ -25,9 +25,11 @@ export default {
 </script>
 
 <template>
+  <h1 class="my-4">Dettaglio Project {{ project?.title }}</h1>
   <ProjectCard
     v-if="project"
     :project="project"
+    :isDetail="true"
   />
 </template>
 
