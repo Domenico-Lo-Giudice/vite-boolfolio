@@ -26,7 +26,7 @@ export default {
       </button>
 
       <div
-        class="collapse navbar-collapse"
+        class="collapse navbar-collapse ms-auto flex-grow-0"
         id="navbarNav"
       >
         <ul class="navbar-nav">
